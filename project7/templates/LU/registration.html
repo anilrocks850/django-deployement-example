@@ -1,0 +1,32 @@
+{% extends "LU/base.html"%}
+{% load static %}
+{% block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <title>Document</title>
+</head>
+<body>
+    This is Registraion Page
+    <div class="jumbotron">
+        {% if registered %}
+            <h1>Thank you for registering</h1>
+        {% else %}
+            <h1>Register Here!</h1>
+            <h3>Fill out the Form</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p}}
+                <input type="submit" value="Register">
+
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endblock %}
